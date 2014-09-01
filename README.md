@@ -2,7 +2,7 @@
 
 This is Airbnb's Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
+It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby] and [Cookpad's guide][cookpad-styleguide] .
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
