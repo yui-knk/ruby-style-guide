@@ -1119,3 +1119,4 @@ in inheritance.
 [google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md
