@@ -2,7 +2,12 @@
 
 This is [MoneyForward's][moneyforward-corp] Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby] and [Cookpad's guide][cookpad-styleguide] and [コーディング規約をまとめてみた (Ruby編)][bojovs-com].
+It was inspired by 
+
+* [Github's guide][github-ruby]
+* [Bozhidar Batsov's guide][bbatsov-ruby] 
+* [Cookpad's guide][cookpad-styleguide] 
+* [コーディング規約をまとめてみた (Ruby編)][bojovs-com]
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
@@ -40,9 +45,9 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Indentation
 
-* [MUST] インデントにはスペースを使用し、幅は2とします。.
+* [必須] インデントにはスペースを使用し、幅は2とします。.
 
-* `case 式` と `when 節` のインデントは同じ深さにします。.
+* [必須] `case 式` と `when 節` のインデントは同じ深さにします。.
 
     ```Ruby
     case
@@ -66,7 +71,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
            end
     ```
 
-* Align function arguments either all on the same line or one per line.
+* [推奨] Align function arguments either all on the same line or one per line.
 
     ```ruby
     # good
@@ -89,10 +94,13 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Inline
 
-* Never leave trailing whitespace.
+* [必須] 行末に空白を置いてはならない。.
 
-* Use spaces around operators; after commas, colons, and semicolons; and around
-  `{` and before `}`.
+* [必須] 以下の部分にスペースを記述します。
+ * 演算子の前後(べき乗の演算子を除く)
+ * カンマ、コロン、セミコロンの後ろ
+ * 中括弧( { )の前後
+ * 中括弧( } )の前
 
     ```Ruby
     sum = 1 + 2
@@ -101,7 +109,9 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].each { |e| puts e }
     ```
 
-* No spaces after `(`, `[` or before `]`, `)`.
+* [必須] 以下の部分にはスペースを記述しません。
+ * 括弧( ( )、角括弧( [ )の後ろ
+ * 括弧( ) )、角括弧( ] )の前
 
     ```Ruby
     some(arg).other
