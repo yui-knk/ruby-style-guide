@@ -1,6 +1,6 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is [MoneyForward's][moneyforward-corp] Ruby Style Guide.
 
 It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby] and [Cookpad's guide][cookpad-styleguide] .
 
@@ -1120,3 +1120,4 @@ in inheritance.
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
 [cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md
+[moneyforward-corp]: http://corp.moneyforward.com/
