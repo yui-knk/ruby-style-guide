@@ -40,9 +40,9 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Indentation
 
-* Use soft-tabs with a two space-indent.
+* [MUST] インデントにはスペースを使用し、幅は2とします。.
 
-* Indent `when` as deep as `case`.
+* `case 式` と `when 節` のインデントは同じ深さにします。.
 
     ```Ruby
     case
