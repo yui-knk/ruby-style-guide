@@ -2,7 +2,7 @@
 
 This is [MoneyForward's][moneyforward-corp] Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby] and [Cookpad's guide][cookpad-styleguide] .
+It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby] and [Cookpad's guide][cookpad-styleguide] and [コーディング規約をまとめてみた (Ruby編)][bojovs-com].
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
@@ -1121,3 +1121,4 @@ in inheritance.
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
 [cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md
 [moneyforward-corp]: http://corp.moneyforward.com/
+[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/
