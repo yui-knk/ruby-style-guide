@@ -4,8 +4,8 @@ This is [MoneyForward's][moneyforward-corp] Ruby Style Guide.
 
 It was inspired by 
 
+* [Bozhidar Batsov's guide(Base)][bbatsov-ruby] 
 * [Github's guide][github-ruby]
-* [Bozhidar Batsov's guide][bbatsov-ruby] 
 * [Cookpad's guide][cookpad-styleguide] 
 * [コーディング規約をまとめてみた (Ruby編)][bojovs-com]
 
@@ -45,9 +45,9 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Indentation
 
-* [必須] インデントにはスペースを使用し、幅は2とします。.
+* [必須] インデントにはスペースを使用し、幅は2とします。
 
-* [必須] `case 式` と `when 節` のインデントは同じ深さにします。.
+* [必須] `case 式` と `when 節` のインデントは同じ深さにします。
 
     ```Ruby
     case
@@ -94,7 +94,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Inline
 
-* [必須] 行末に空白を置いてはならない。.
+* [必須] 行末に空白を置いてはならない。
 
 * [必須] 以下の部分にスペースを記述します。
  * 演算子の前後(べき乗の演算子を除く)
@@ -408,8 +408,7 @@ Never leave commented-out code in our codebase.
 
 ### Method definitions
 
-* Use `def` with parentheses when there are arguments. Omit the
-  parentheses when the method doesn't accept any arguments.
+* `def式` と `def式` の間には空行を入れ、`def式` 内は論理的にまとまった処理の集まりごとに空行を入れます。
 
      ```Ruby
      def some_method
@@ -515,7 +514,7 @@ In either case:
 
 ### Conditional keywords
 
-* Never use `then` for multi-line `if/unless`.
+* [必須] if/unless 式には then を付加せず記述します。
 
     ```Ruby
     # bad
@@ -529,7 +528,7 @@ In either case:
     end
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth it. Always use `&&` and `||` instead.
+* [必須] `and`と` or`キーワードは使いません。常に`&&`と `||`を使います。
 
 * Modifier `if/unless` usage is okay when the body is simple, the
   condition is simple, and the whole thing fits on one line. Otherwise,
@@ -553,7 +552,7 @@ In either case:
     return if self.reconciled?
     ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+* [必須] `unless式` では `else句` を使用しません。`if式` に書き換えます。
 
     ```Ruby
     # bad
@@ -571,7 +570,7 @@ In either case:
     end
     ```
 
-* Avoid `unless` with multiple conditions.
+* [必須] `unless式`では複数条件を使いません。
 
     ```Ruby
       # bad
@@ -585,8 +584,8 @@ In either case:
       end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`,
-  unless the condition contains an assignment (see [Using the return
+* if/unless/while 式の条件部には括弧を使用しません。
+ * unless the condition contains an assignment (see [Using the return
   value of `=`](#syntax) below).
 
     ```Ruby
@@ -640,11 +639,9 @@ In either case:
 
 ## Syntax
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+* できるだけ `for式` を使用せず、`eachメソッド` を使用します。
+ * `for式` で使用する変数 (上の例でいう `elem`) が `for式` の外からでも呼び出せてしまうため
+  * `eachメソッド` で使用する変数はブロックスコープ内で宣言されるため、ブロックの内側からでしか呼び出せない
 
     ```Ruby
     arr = [1, 2, 3]
@@ -658,12 +655,7 @@ In either case:
     arr.each { |elem| puts elem }
     ```
 
-
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-  `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
+* 1行で記述されるブロックには中括弧 `{...}` を使用します。 その1行が複雑だったり横に長かったりする場合や、処理を複数行記述するときは、`do...end` を使用します。
 
     ```Ruby
     names = ["Bozhidar", "Steve", "Sarah"]
@@ -689,7 +681,7 @@ In either case:
     `{...}`, but they should ask themselves - it this code really readable and
     can't the blocks contents be extracted into nifty methods.
 
-* Avoid `return` where not required.
+* `return` が不要なときは記述しません。
 
     ```Ruby
     # bad
@@ -730,7 +722,8 @@ In either case:
     name ||= 'Bozhidar'
     ```
 
-* Don't use `||=` to initialize boolean variables. (Consider what
+* 真偽値の初期化を行うときは ||= を使用してはいけません。
+ * (Consider what
   would happen if the current value happened to be `false`.)
 
     ```Ruby
@@ -933,7 +926,7 @@ in inheritance.
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
 
-* Use symbols instead of strings as hash keys.
+* ハッシュはRuby 1.9から追加されたリテラルを使用して記述します。
 
     ```Ruby
     # bad
@@ -960,7 +953,7 @@ in inheritance.
 
 ## Strings
 
-* Prefer string interpolation instead of string concatenation:
+* [必須] 文字列の結合は使用せず、式展開を使用します。
 
     ```Ruby
     # bad
@@ -987,9 +980,8 @@ in inheritance.
     cache.write(CACHE_KEY % @user.id)
     ```
 
-* Avoid using `String#+` when you need to construct large data chunks.
-  Instead, use `String#<<`. Concatenation mutates the string instance in-place
-  and is always faster than `String#+`, which creates a bunch of new string objects.
+* [推奨] 大きな文字列を結合する場合は、`String#+` を使用せず `String#<<` を使用します。
+ * `String#+` は非破壊的なメソッドであるため。`String#+` は文字列結合するたびに新しい文字列を生成する。 そのため、`String#<<` のほうが速い。
 
     ```Ruby
     # good and also fast
@@ -1042,14 +1034,13 @@ in inheritance.
 
 ## Percent Literals
 
-* Use `%w` freely.
+* [推奨] 配列の中に文字列のみが含まれている場合は `%w` を使用します。
 
     ```Ruby
     STATES = %w(draft open closed)
     ```
 
-* Use `%()` for single-line strings which require both interpolation
-  and embedded double-quotes. For multi-line strings, prefer heredocs.
+* [必須] 1行で記述できる文字列で、ダブルクォートと式展開を両方使用している場合は `%()` を使用します。 複数行に渡る場合はヒアドキュメントを使用します。
 
     ```Ruby
     # bad - no interpolation needed
