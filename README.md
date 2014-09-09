@@ -9,7 +9,12 @@ It was inspired by
 * [Cookpad's guide][cookpad-styleguide] 
 * [コーディング規約をまとめてみた (Ruby編)][bojovs-com]
 
+
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+
+次の目標は、Railsコーディング規約
+ 
+* [ozhidar Batsov's guide(Rails)][bbatsov-rails]
 
 ## Table of Contents
   1.  [Whitespace](#whitespace)
@@ -1123,3 +1128,4 @@ in inheritance.
 [cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md
 [moneyforward-corp]: http://corp.moneyforward.com/
 [bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/
+[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide
