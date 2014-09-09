@@ -4,7 +4,7 @@ This is [MoneyForward's][moneyforward-corp] Ruby Style Guide.
 
 It was inspired by 
 
-* [Bozhidar Batsov's guide(Base)][bbatsov-ruby] 
+* [Bozhidar Batsov's guide(これを元にしています)][bbatsov-ruby] 
 * [Github's guide][github-ruby]
 * [Cookpad's guide][cookpad-styleguide] 
 * [コーディング規約をまとめてみた (Ruby編)][bojovs-com]
@@ -17,7 +17,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 * [ozhidar Batsov's guide(Rails)][bbatsov-rails]
 
 ## Table of Contents
-  1.  [Whitespace](#whitespace)
+  1.  [空白](#whitespace)
       1. [Indentation](#indentation)
       1. [Inline](#inline)
       1. [Newlines](#newlines)
@@ -46,7 +46,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1. [Rails Specific](#rails)
   1. [Be Consistent](#be-consistent)
 
-## Whitespace
+## 空白
 
 ### Indentation
 
