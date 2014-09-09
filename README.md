@@ -17,7 +17,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 * [ozhidar Batsov's guide(Rails)][bbatsov-rails]
 
 ## Table of Contents
-  1.  [空白](#whitespace)
+  1.  [空白](#空白)
       1. [Indentation](#indentation)
       1. [Inline](#inline)
       1. [Newlines](#newlines)
