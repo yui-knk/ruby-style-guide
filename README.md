@@ -2,7 +2,7 @@
 
 これは [マネーフォワード][moneyforward-corp] Ruby コーディング規約です.
 
-これらを、インスパイアしています 
+これらを、模範にしています 
 
 * [Bozhidar Batsov's 規約(これを元にしています)][bbatsov-ruby] 
 * [Github規約][github-ruby]
