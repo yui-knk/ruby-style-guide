@@ -31,12 +31,6 @@
 * [ツール](#ツール)
 
 ## レイアウト
-
-> ほとんどすべての人が、彼ら自身のではないスタイルは
-> 不快で合理的でないと確信している。
-> 「彼ら自身の」を除けば、おそらく正しいのだが、、、
-> -- Jerry Coffin (on indentation)
-
 * <a name="utf-8"></a>
   ソースファイルのエンコーディングには`UTF-8`を用いましょう。
 <sup>[[link](#utf-8)]</sup>
@@ -1610,9 +1604,6 @@
 
 ## 命名規則
 
-> プログラミングでただひとつ難しいことは、キャッシュの無効化と命名である。 <br/>
-> -- Phil Karlton
-
 * <a name="english-identifiers"></a>
   識別子は英語で名づけましょう。
 <sup>[[link](#english-identifiers)]</sup>
@@ -1842,12 +1833,6 @@
 
 ## コメント
 
-> 良いコードは素晴らしいドキュメントを持っています。
-> あなたがまさにコードにコメントを追加しようとしている時、
-> 自問してほしい、"どのようにコードを改善すれば、このコメントが不要になるだろうか？"
-> コードを改善してドキュメントをより明快にしましょう。
-> -- Steve McConnell
-
 * <a name="no-comments"></a>
   コードそのものがドキュメントになるような説明的なコードを書いて、このセクションの残りのパートは無視しましょう。本当に！
 <sup>[[link](#no-comments)]</sup>
@@ -1878,9 +1863,6 @@
   コメントは最新に保ちましょう。
   古くなったコメントは、コメントがないより悪いです。
 <sup>[[link](#comment-upkeep)]</sup>
-
-> 良いコードは良いジョークのようだ - なんの説明もいらない。<br/>
-> -- Russ Olsen
 
 * <a name="refactor-dont-comment"></a>
   悪いコードを説明するコメントは避けましょう。
@@ -2948,10 +2930,6 @@
 
 ## 正規表現
 
-> 問題に突き当たった時、"そうだ、正規表現を使おう"と考えます。
-> そこには２つの問題があります。<br/>
-> -- Jamie Zawinski
-
 * <a name="no-regexp-for-plaintext"></a>
   単にプレーンテキストを文字列中から探すだけの時は、
   正規表現を使ってはいけません: `string['text']`を使いましょう。
@@ -3325,39 +3303,26 @@ MRI 1.9, MRI 2.0 双方をサポートし、Emacs向けのよいプラグイン�
 [RubyMine](http://www.jetbrains.com/ruby/) のコードインスペクションは、このガイドに
 [部分的に基づいています](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)。
 
-# Contributing
 
-このガイドに書いてあることには変更不能なものはありません。
-Rubyのコードスタイルに興味のある全ての人と共に取り組むことが私の望みなので、
-究極的には、全てのRubyコミュニティにとって有益なリソースを作ることができればと思っています。
+----
+----
+----
+----
 
-改善のために、遠慮せずチケットを立てたりプルリクエストを送ったりしてください。
-あなたの手助けに予め感謝します！
 
-また、このプロジェクト(とRubocop)への金銭的な貢献は、
-[gittip](https://www.gittip.com/bbatsov)経由で行うことができます。
 
-[![Gittip経由での支援](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
-## 貢献するには
 
-簡単です！ [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md)を読んでください！
 
-# ライセンス
 
-![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-この著作物は、[Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
-に従います。
 
-# 広めましょう
 
-コミュニティ駆動のスタイルガイドは、これを知らないコミュニティにはほとんど役に立ちません。
-このガイドについてつぶやいたり、友達や同僚にシェアしてください。
-全てのコメント、提案、オプションがこのガイドを少しだけでも良くしていきます。
-そして、考えうるベストのガイドが欲しいですよね？
 
-ありがとう<br/>
-[Bozhidar](https://twitter.com/bbatsov)
+
+
+
+
+
 
 # Ruby コーディング規約
 
