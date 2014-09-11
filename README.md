@@ -40,6 +40,7 @@
 ## レイアウト
 * <a name="utf-8"></a>
   ソースファイルのエンコーディングには`UTF-8`を用いましょう。
+ * ソースコード中にマジックコメントが書かれることはありません
 <sup>[[link](#utf-8)]</sup>
 
 * <a name="spaces-indentation"></a>
@@ -505,6 +506,17 @@
   num = 1_000_000
   ```
 
+* <a name="underscores-in-numerics-hex"></a>
+桁数が大きな2進法および16進法の数値リテラルは4桁毎に下線を入れて読みやすくする。
+<sup>[[link](#underscores-in-numerics-hex)]</sup>
+  - 例: `0xABCD_1234`
+* 16進法はアルファベットの大文字で書いても小文字で書いても良いが、1つのファイルの中では統一すること。
+* <a name="fraction"></a>
+分数は `r` サフィックスを用いて書くこと。<sup>[[link](#fraction)]</sup>  - 例: `1/2r #=> (1/2)`
+
+* <a name="complex-number"></a>
+複素数は `i` または `ri` サフィックスを用いて書くこと。
+<sup>[[link](#complex-number)]</sup>  - 例: `1 + 2i #=> (1+2i)`
 * <a name="rdoc-conventions"></a>
   APIのドキュメントのため、RDocの規約に従いましょう。
   コメント行と`def`の間に空行を入れてはいけません。
@@ -1077,6 +1089,10 @@
 * <a name="long-method-chain"></a>
 長いメソッドチェインの最後のメソッド呼び出しでブロックを渡す場合、最後のメソッド呼び出しのレシーバをローカル変数として抽出し、ブロック付きメソッド呼び出しを独立した式として書くこと。
 <sup>[[link](#long-method-chain)]</sup>    ```ruby    # good    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date)    posts.each do |post|      next if stuff_ids.include?(post.user_id)      comment_count += post.comments.size    end    # bad    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date).each do |post|        next if stuff_ids.include?(post.user_id)        comment_count += post.comments.size      end    ```
+
+* <a name="method-inline-newline"></a>
+式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。<sup>[[link](#method-inline-newline)]</sup>
+    ```ruby    # good    User.active.      some_scope(foo).      other_scope(bar)    # bad    User.active.    some_scope(foo).    other_scope(bar)
 
 * <a name="block-argument"></a>
   単に他のブロックに引数を渡すだけのブロックリテラルを避けるため、
