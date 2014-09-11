@@ -3315,8 +3315,4 @@ MRI 1.9, MRI 2.0 双方をサポートし、Emacs向けのよいプラグイン�
 [RubyMine](http://www.jetbrains.com/ruby/) のコードインスペクションは、このガイドに
 [部分的に基づいています](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)。
 
-
-----
-----
-----
-----
+## Be Consistent&mdash;[Google C++ Style Guide][google-c++][airbnb-javascript]: https://github.com/airbnb/javascript[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide[github-ruby]: https://github.com/styleguide/ruby[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md[moneyforward-corp]: http://corp.moneyforward.com/[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide
