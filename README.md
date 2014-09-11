@@ -16,7 +16,8 @@
 以下は、ドメインの前提条件です
 * Rubyのバージョンは2.1以降を前提とする（これ以前のバージョンのプロダクトが無い為）
  * 複数の表記がある場合、新しく採用された表記を強く推奨します
-* 推奨が付いているものは、強い理由がない場合は統一性の為合わせてください
+* 強い理由がない場合は統一性の為合わせてください。これは可読性を担保する為です。
+ * 本規約に沿わない表記を否定するものではありません
 * 強い理由があり説得できる材料が場合、理由を説明した上で任意の表記を行ってください
 
 ## 目次
@@ -1072,6 +1073,10 @@
   `{...}`を用いた複数行のメソッドチェーンをOKと主張する人もいるかもしれないが、
   自問してみてほしい - このコードは本当に読みやすいだろうか？
   また、このブロックの本文は素早く展開できるだろうか？
+
+* <a name="long-method-chain"></a>
+長いメソッドチェインの最後のメソッド呼び出しでブロックを渡す場合、最後のメソッド呼び出しのレシーバをローカル変数として抽出し、ブロック付きメソッド呼び出しを独立した式として書くこと。
+<sup>[[link](#long-method-chain)]</sup>    ```ruby    # good    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date)    posts.each do |post|      next if stuff_ids.include?(post.user_id)      comment_count += post.comments.size    end    # bad    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date).each do |post|        next if stuff_ids.include?(post.user_id)        comment_count += post.comments.size      end    ```
 
 * <a name="block-argument"></a>
   単に他のブロックに引数を渡すだけのブロックリテラルを避けるため、
