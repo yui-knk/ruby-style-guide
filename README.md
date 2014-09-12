@@ -34,6 +34,7 @@
 * [Collections](#collections)
 * [文字列](#文字列)
 * [正規表現](#正規表現)
+* [代入式](#代入式)
 * [パーセントリテラル](#パーセントリテラル)
 * [メタプログラミング](#メタプログラミング)
 * [雑則](#雑則)
@@ -778,8 +779,9 @@
   ```
 
 * <a name="no-and-or-or"></a>
-  `and`と`or`の使用は禁止です。それらにその価値はありません。
-   常に、代わりに`&&`と`||`を使いましょう。
+  `and`と`or`と`not`の使用は禁止です。それらにその価値はありません。
+   常に、代わりに`&&`と`||`と`!`を使いましょう。
+ * ただし、`式 or raise 'message'`の時のみ`or`を使っても良い。
 <sup>[[link](#no-and-or-or)]</sup>
 
   ```Ruby
@@ -880,6 +882,8 @@
     puts 'failure'
   end
   ```
+* <a name="no-unless-with-multi-condition"></a>
+`unless` および `until` の条件式に複数の項を `||` で結合した論理式 (加法標準形) を書いてはならない。<sup>[[link](#no-unless-with-multi-condition)]</sup>
 
 * <a name="no-parens-if"></a>
   `if/unless/while/until`構文では`()`の使用は避けましょう.
@@ -896,6 +900,9 @@
     # body omitted
   end
   ```
+* <a name="no-while-not"></a>
+`while !condition` の代わりに `until condition` と書くこと。
+<sup>[[link](#no-while-not)]</sup>
 
 * <a name="no-multiline-while-do"></a>
   複数行の`while/until`では、`while/until condition do`を使ってはいけません。
@@ -1023,6 +1030,9 @@
   user.set(name: 'John', age: 45, permissions: { read: true })
   ```
 
+* <a name="no-braces-opts-hash2"></a>
+パラメータリストの末尾にハッシュリテラルを書く場合は、ハッシュリテラルの括弧を省略すること。<sup>[[link](#no-braces-opts-hash2)]</sup>
+    ```ruby    # good    foo(1, 2, foo: :bar, baz: 42)    # bad    foo(1, 2, { foo: :bar, baz: 42 })    ```
 * <a name="no-dsl-decorating"></a>
   内部DSLの一部として使われるメソッドの引数では、外側の`()`、`{}`は省略しましょう
 <sup>[[link](#no-dsl-decorating)]</sup>
@@ -1088,9 +1098,18 @@
   自問してみてほしい - このコードは本当に読みやすいだろうか？
   また、このブロックの本文は素早く展開できるだろうか？
 
+
+* <a name="indent-do-end"></a>
+`do`/`end` によるブロックでは、`do`の前後に空白を1つ入れ、ブロックパラメータの後で改行し、`end` は独立した行に書くこと。ブロック本体のインデントは1レベル下げ、`end` のインデントはメソッド呼び出しの1行目にあわせること。<sup>[[link](#indent-do-end)]</sup>
+    ```ruby    # good    [1, 2, 3].each do |num|      puts num    end    # bad    [1, 2, 3].each do |num|        puts num      end    # bad    [1, 2, 3].each do |num|                     puts num                   end    # bad    [1, 2, 3].each do |num| puts num end    ```* <a name="brace-block-space"></a>
+中括弧によるブロックでは、`{` の前に空白を1つ入れること。<sup>[[link](#brace-block-space2)]</sup>
+* <a name="brace-block-space"></a>
+中括弧によるブロックを1行で書く場合は、`{`　またはブロックパラメータと本体コードの間、および本体コードと `}` の間に空白を1つずつ入れること。<sup>[[link](#brace-block-space2)]</sup>
+    ```ruby    # good    [1, 2, 3].each {|num| puts num }    [1, 2, 3].each { |num| puts num }    # bad    [1, 2, 3].each {|num| puts num}    # bad    [1, 2, 3].each { |num| puts num}    # good    10.times { puts 'Hello world' }    # bad    10.times {puts 'Hello world' }    # bad    10.times {puts 'Hello world'}    # bad    10.times { puts 'Hello world'}    ```	
 * <a name="long-method-chain"></a>
 長いメソッドチェインの最後のメソッド呼び出しでブロックを渡す場合、最後のメソッド呼び出しのレシーバをローカル変数として抽出し、ブロック付きメソッド呼び出しを独立した式として書くこと。
-<sup>[[link](#long-method-chain)]</sup>    ```ruby    # good    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date)    posts.each do |post|      next if stuff_ids.include?(post.user_id)      comment_count += post.comments.size    end    # bad    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date).each do |post|        next if stuff_ids.include?(post.user_id)        comment_count += post.comments.size      end    ```
+<sup>[[link](#long-method-chain)]</sup>
+    ```ruby    # good    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date)    posts.each do |post|      next if stuff_ids.include?(post.user_id)      comment_count += post.comments.size    end    # bad    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date).each do |post|        next if stuff_ids.include?(post.user_id)        comment_count += post.comments.size      end    ```
 
 * <a name="method-inline-newline"></a>
 式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。<sup>[[link](#method-inline-newline)]</sup>
@@ -3097,6 +3116,13 @@
 * <a name="gsub-blocks"></a>
   `sub`/`gsub`での複雑な置換は、ブロックやハッシュを用いることで実現できます。
 <sup>[[link](#gsub-blocks)]</sup>
+
+
+## 代入式* <a name="tuple"></a>
+複合代入はリテラルまたは引数なしのメソッド呼び出しの結果を代入する場合、および2つの変数または属性の値を交換する場合のみ使ってよい。<sup>[[link](#tuple)]</sup>
+
+* <a name="assignment-space"></a>
+代入記号の両側に空白を入れること。<sup>[[link](#assignment-space)]</sup>
 
 ## パーセントリテラル
 
