@@ -14,7 +14,7 @@
 * [ozhidar Batsov's 規約(Rails版)][bbatsov-rails]
 
 以下は、ドメインの前提条件です
-* Rubyのバージョンは2.1以降を前提とする（これ以前のバージョンのプロダクトが無い為）
+* Rubyのバージョンは2.1以降を前提とする（バージョンの異なるプロダクトが無い為）
  * 複数の表記がある場合、新しく採用された表記を強く推奨します
 * 強い理由がない場合は統一性の為合わせてください。これは可読性を担保する為です。
  * 本規約に沿わない表記を否定するものではありません
@@ -1893,6 +1893,10 @@
   counter += 1 # Increments counter by one.
   ```
 
+* <a name="comment-tomdoc"></a>
+ドキュメンテーションコメントは[TomDoc](http://tomdoc.org/)のフォーマットに従うこと。
+ * モジュールやクラスが外部に公開するメソッドとアクセサに対してドキュメンテーションコメントを Markdown 形式で書くこと。<sup>[[link](#comment-tomdoc)]</sup>
+
 * <a name="comment-upkeep"></a>
   コメントは最新に保ちましょう。
   古くなったコメントは、コメントがないより悪いです。
@@ -2327,6 +2331,13 @@
   end
   ```
 
+* <a name="blakline-public-private-protected"></a>メソッド定義の後で、そのメソッドの可視性を変更するために `private` や `protected` や `public` を引数付きで呼び出す場合は、メソッド定義とこれらのメソッド呼び出しの間に空行を入れてはならない。<sup>[[link](#blankline-public-private-protected)]</sup>
+    ```ruby    class Foo      # good      def foo      end      private :foo      # bad      def foo      end      private :foo    end    ```
+
+* <a name="space-public-private-protected"></a>
+`private` や `protected` や `public` を引数なしで使用する場合、インデントレベルはメソッド定義と同じレベルとし、前後に1行ずつ空白を入れること。<sup>[[link](#space-public-private-protected)]</sup>
+    ```ruby    # good    class Foo      def foo      end      private      def bar      end    end    # bad    class Foo      def foo      end    private      def bar      end    end    # bad    class Foo      def foo      end      private        def bar        end    end    # bad    class Foo      def foo      end      private      def bar      end    end    ```
+
 * <a name="def-self-singletons"></a>
   シングルトンメソッドを定義するときは`def self.method`を用いましょう。
   クラス名を繰り返さないので、簡単にリファクタリングできるようになります。
@@ -2607,6 +2618,8 @@
 * <a name="literal-array-hash"></a>
   配列やハッシュのリテラルの方が好まれます。
   (コンストラクタに引数を渡す場合を除けば、ということですが)
+ * 引数なしの `Array.new` `Hash.new` を使ってはならない。
+ * 同じ要素を `n` 個持つ配列を初期化するときは `Array.new(n, obj)` を使用すること。`[obj] * n` と書いてはならない。
 <sup>[[link](#literal-array-hash)]</sup>
 
   ```Ruby
@@ -2619,6 +2632,10 @@
   hash = {}
   ```
 
+*  <a name="range-to-array"></a>
+範囲リテラルを配列に変換するときは、`Range#to_a` ではなく `[*range]` を使うこと。
+<sup>[[link](#range-to-array)]</sup>
+    ```ruby    # good    [*1..10]  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    # bad    (1..10).to_a  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    ```
 * <a name="percent-w"></a>
   (空文字列や、文字列内にスペースが入っていない)文字列の配列構文は、
   `%w`リテラルの方が好まれます。
@@ -2718,6 +2735,7 @@
 * <a name="no-mixed-hash-syntaces"></a>
   Ruby 1.9のハッシュ記法とハッシュロケットを同じハッシュリテラル内で混在させてはいけません。
   シンボルでないキーがある場合は、ハッシュロケット記法を続けなければなりません。
+ * ハッシュリテラルの key が symbol だが、`.`, `-`等を含む場合、HashRocket に統一するのが望ましい。
 <sup>[[link](#no-mixed-hash-syntaces)]</sup>
 
   ```Ruby
@@ -2728,6 +2746,7 @@
   { :a => 1, 'b' => 2 }
   ```
 
+    ```ruby    # good    { :cookpad => 42,      :'cookpad.com' => 'foo',    }    # bad    { cookpad: 42,      :'cookpad.com' => 'foo',    }    ```
 * <a name="hash-key"></a>
   `Hash#has_key?`より`Hash#key?`を、
   `Hash#has_value?`より`Hash#value?`を用いましょう。
@@ -2849,6 +2868,7 @@
   Rubyコミュニティには2つの有名なスタイル - デフォルトでシングルクォートを用いるもの (Option A)、
   ダブルクォートを用いるもの (Option B) - があり、
   どちらも良いと考えられています。
+　　文字列内部のエスケープシーケンスが最も少なくなるよう、適切な区切り記号を選択すること。
 <sup>[[link](#consistent-string-literals)]</sup>
 
   * **(Option A)** 文字列挿入の必要がないときや、`\t`や`\n`｀’｀等の特別な文字がない場合は、
@@ -2878,10 +2898,10 @@
   しかしながら、このガイド内の文字列リテラル表記は、
   １つ目のスタイルを採用しています。
 
+* <a name="persent-string-literals"></a>`%` 記法で文字列リテラルを書く場合は、括弧を区切り記号に使用すること。括弧の種類はどれでも良い。ただし、次のような特殊な場合は括弧以外を区切り記号として良い:<sup>[[link](#persent-string-literals)]</sup>
+    ```ruby    OPEN_PARENTHESES = %!({[!    ```
 * <a name="no-character-literals"></a>
   文字リテラル構文`?x`を用いてはいけません。
-  Ruby 1.9からは基本的には冗長です -
-  `?x`は`'x'`(１文字の文字列)に変換されます
 <sup>[[link](#no-character-literals)]</sup>
 
   ```Ruby
@@ -2971,6 +2991,8 @@
   END
   # => "def test\n  some_method\n  other_method\nend\n"
   ```
+* <a name="loop-include-strings"></a>
+ループ内で文字列リテラルを書いてはならない。ここでループとは `while`、`until`、`for`、およびイテレータ (`each` などのブロックを何度も呼び出すブロック付きメソッド呼び出しのブロック内) である。<sup>[[link](#loop-include-strings)]</sup>
 
 ## 正規表現
 
@@ -2991,6 +3013,7 @@
 
 * <a name="non-capturing-regexp"></a>
   捕捉した結果を使う必要のないとき、捕捉しないグループを用いましょう。
+ * 必要のない後方参照グループを作成してはならない。`(?: ... )` を使うこと。
 <sup>[[link](#non-capturing-regexp)]</sup>
 
   ```Ruby
@@ -3058,6 +3081,7 @@
   これを用いることで、より読みやすくなり、
   便利なコメントを使えるようになります。
   スペースが無視されることに注意しましょう。
+ * 具体例は [uri/common.rb で定義されている正規表現](https://github.com/ruby/ruby/blob/trunk/lib/uri/common.rb#L457) が参考になる。
 <sup>[[link](#comment-regexes)]</sup>
 
   ```Ruby
