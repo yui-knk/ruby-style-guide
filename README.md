@@ -2726,6 +2726,60 @@
   これは`Array`の直感的な内部操作と、`Hash`の要素発見の速さが合わさっています。
 <sup>[[link](#set-vs-array)]</sup>
 
+
+
+
+
+
+* <a name="list-literals-indent"></a>
+配列リテラルを複数行で書く場合、`[`と一つ目の要素の間に1つの空白を入れて、要素の先頭を揃えること。
+<sup>[[link](#list-literals-indent)]</sup>
+
+    ```ruby
+    # good
+    [ :foo,
+      :bar,
+      :baz
+    ]
+
+    # bad
+    [:foo,
+      :bar,
+      :baz
+    ]
+    ```
+
+* <a name="list-literals-indent-assignment"></a>
+代入の後ろに配列リテラルを複数行で書く場合は、`[` の後ろで改行し、要素行のインデントを1レベル下げ、`]` は独立した行に置いて `[` を書いた行の行頭にインデントを揃える。
+<sup>[[link](#list-literals-indent-assignment)]</sup>
+
+    ``` ruby
+    # good
+    array = [
+      :foo,
+      :bar,
+      :baz,
+    ]
+
+    # bad
+    array = [ :foo,
+              :bar,
+              :baz, ]
+
+    # bad
+    array = [ :foo,
+              :bar,
+              :baz,
+            ]
+
+    # bad
+    array = [
+      :foo,
+      :bar,
+      :baz, ]
+
+
+
 * <a name="symbols-as-keys"></a>
   ハッシュのキーには文字列よりシンボルが好まれます。
 <sup>[[link](#symbols-as-keys)]</sup>
@@ -2774,7 +2828,7 @@
 
 
 * <a name="hash-literals-indent"></a>
-ハッシュリテラルを単独で複数行で書く場合は、`{` の後に第一要素を書き、第二要素以降のインデントを1レベル下げ、`}` は独立した行に置いて `{` を書いた行の行頭にインデントを揃える。
+ハッシュリテラルを単独で複数行で書く場合は、`{` の後で改行し、要素行のインデントを1レベル下げ、`}` は独立した行に置いて `{` を書いた行の行頭にインデントを揃える。
 <sup>[[link](#hash-literals-indent)]</sup>
     ```ruby
     # 悪い例
