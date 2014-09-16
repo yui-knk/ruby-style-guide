@@ -2769,6 +2769,64 @@
   ```
 
     ```ruby    # 良い例    { :cookpad => 42,      :'cookpad.com' => 'foo',    }    # bad    { cookpad: 42,      :'cookpad.com' => 'foo',    }    ```
+
+
+
+
+* <a name="hash-literals-indent"></a>
+ハッシュリテラルを単独で複数行で書く場合は、`{` の後に第一要素を書き、第二要素以降のインデントを1レベル下げ、`}` は独立した行に置いて `{` を書いた行の行頭にインデントを揃える。
+<sup>[[link](#hash-literals-indent)]</sup>
+    ```ruby
+    # 悪い例
+    { first: 42,
+      second: 'foo',
+    }
+
+    # 良い例
+    {
+      first: 42,
+      second: 'foo',
+    }
+
+    # 悪い例
+    { first: 42,
+    second: 'foo',
+    }
+    ```
+
+* <a name="hash-literals-indent-assignment"></a>
+代入の後ろに配列リテラルを複数行で書く場合は、`{` の後で改行し、要素行のインデントを1レベル下げ、`}` は独立した行に置いて `{` を書いた行の行頭にインデントを揃える。
+<sup>[[link](#hash-literals-indent-assignment)]</sup>
+
+    ```ruby
+    # 良い例
+    hash = {
+      first: 42,
+      second: 'foo',
+    }
+
+    # 悪い例
+    hash = { first: 42,
+             second: 'foo',
+           }
+
+    # 悪い例
+    hash = { first: 42,
+             second: 'foo',
+    }
+
+    # 悪い例
+    hash = { first: 42,
+      second: 'foo',
+    }
+
+    # 悪い例
+    hash = {
+    first: 42,
+    second: 'foo',
+    }
+    ```
+
 * <a name="hash-key"></a>
   `Hash#has_key?`より`Hash#key?`を、
   `Hash#has_value?`より`Hash#value?`を用いましょう。
