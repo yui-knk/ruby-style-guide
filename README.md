@@ -2732,17 +2732,18 @@
 
 
 * <a name="list-literals-indent"></a>
-配列リテラルを複数行で書く場合、`[`と一つ目の要素の間に1つの空白を入れて、要素の先頭を揃えること。
+配列リテラルを複数行で書く場合、`[` の後ろで改行し、要素行のインデントを1レベル下げ、`]` は独立した行に置いて `[` を書いた行の行頭にインデントを揃える。
 <sup>[[link](#list-literals-indent)]</sup>
 
     ```ruby
-    # good
-    [ :foo,
+    # 良い例
+    [
+      :foo,
       :bar,
       :baz
     ]
 
-    # bad
+    # 悪い例
     [:foo,
       :bar,
       :baz
@@ -2753,30 +2754,31 @@
 代入の後ろに配列リテラルを複数行で書く場合は、`[` の後ろで改行し、要素行のインデントを1レベル下げ、`]` は独立した行に置いて `[` を書いた行の行頭にインデントを揃える。
 <sup>[[link](#list-literals-indent-assignment)]</sup>
 
-    ``` ruby
-    # good
+    ```ruby
+    # 良い例
     array = [
       :foo,
       :bar,
-      :baz,
+      :baz
     ]
 
-    # bad
+    # 悪い例
     array = [ :foo,
               :bar,
               :baz, ]
 
-    # bad
+    # 悪い例
     array = [ :foo,
               :bar,
               :baz,
             ]
 
-    # bad
+    # 悪い例
     array = [
       :foo,
       :bar,
       :baz, ]
+    ```
 
 
 
