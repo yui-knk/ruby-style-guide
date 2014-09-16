@@ -2,7 +2,7 @@
 
 これは [マネーフォワード][moneyforward-corp] Ruby コーディング規約です.
 
-これらを、模範（ベース）にしています 
+これらを、お手本（ベース）にしています 
 
 * [Bozhidar Batsov's 規約(これを元にしています)][bbatsov-ruby] 
 * [Github規約][github-ruby]
@@ -530,7 +530,7 @@
 
 * <a name="80-character-limits"></a>
   [推奨] 特殊な事情が無い限りは1行の文字数を80文字以内に納めること (全角文字は2文字と数えること)。
- * どんな事情があろうとも1行の文字数が128文字を越えてはならない
+ * どんな事情があろうとも1行の文字数が100文字を越えてはならない
 <sup>[[link](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
