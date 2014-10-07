@@ -39,6 +39,7 @@
 * [正規表現](#正規表現)
 * [代入式](#代入式)
 * [パーセントリテラル](#パーセントリテラル)
+* [ブロック](#ブロック)
 * [メタプログラミング](#メタプログラミング)
 * [雑則](#雑則)
 * [ツール](#ツール)
@@ -1117,6 +1118,7 @@
 * <a name="method-inline-newline"></a>
 式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。<sup>[[link](#method-inline-newline)]</sup>
     ```ruby    # 良い例    User.active.      some_scope(foo).      other_scope(bar)    # 悪い例    User.active.    some_scope(foo).    other_scope(bar)
+    ```
 
 * <a name="block-argument"></a>
   単に他のブロックに引数を渡すだけのブロックリテラルを避けるため、
@@ -3338,6 +3340,15 @@
   %w(one two three)
   %q("Test's king!", John said.)
   ```
+
+## ブロック
+
+* <a name="block-argument-call"></a>
+ブロックの呼び出しは、`yield`を用い、`block.call`は使いません。
+記述量だけでなく、実行速度においても優れている為です。
+<sup>[[link](#block-argument-call)]</sup>
+
+[参考](https://speakerdeck.com/sferik/writing-fast-ruby)
 
 ## メタプログラミング
 
