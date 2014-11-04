@@ -409,6 +409,7 @@
   Rubyコミュニティには2つの有名なスタイル - 先頭に`.`を付けるもの (Option A)、
   末尾に`.`を付けるもの (Option B) - があり、
   どちらも良いと考えられています。
+  我々は先頭に`.`を付けるもの (Option A)を採用します。
 <sup>[[link](#consistent-multi-line-chains)]</sup>
 
   * **(Option A)** メソッドチェーンを次の行へつなげる時は、
@@ -422,19 +423,6 @@
     # 良い例 - ２行目で何が行われているかすぐに理解できます
     one.two.three
       .four
-    ```
-
-  * **(Option B)** メソッドチェーンを次の行につなげる時は、
-    式が続くことを示すように最初の行に`.`を置きましょう。
-
-    ```Ruby
-    # 悪い例 - メソッドチェーンが続いているかを知るには、次の行を読む必要があります
-    one.two.three
-      .four
-
-    # 良い例 - 最初の行を越えて式が続くか一目瞭然です
-    one.two.three.
-      four
     ```
 
   双方のスタイルのメリットに関する議論は[こちら](https://github.com/bbatsov/ruby-style-guide/pull/176)
@@ -1117,7 +1105,7 @@
 
 * <a name="method-inline-newline"></a>
 式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。<sup>[[link](#method-inline-newline)]</sup>
-    ```ruby    # 良い例    User.active.      some_scope(foo).      other_scope(bar)    # 悪い例    User.active.    some_scope(foo).    other_scope(bar)
+    ```ruby    # 良い例    User.active      .some_scope(foo)      .other_scope(bar)    # 悪い例    User.active.    some_scope(foo).    other_scope(bar)
     ```
 
 * <a name="block-argument"></a>
@@ -3528,4 +3516,4 @@ MRI 1.9, MRI 2.0 双方をサポートし、Emacs向けのよいプラグイン�
 [RubyMine](http://www.jetbrains.com/ruby/) のコードインスペクションは、このガイドに
 [部分的に基づいています](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)。
 
-## Be Consistent&mdash;[Google C++ Style Guide][google-c++][airbnb-javascript]: https://github.com/airbnb/javascript[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide[github-ruby]: https://github.com/styleguide/ruby[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md[moneyforward-corp]: http://corp.moneyforward.com/[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide[moneyforward-rails]: https://github.com/moneyforward/rails-style-guide
+## Be Consistent&mdash;[Google C++ Style Guide][google-c++][airbnb-javascript]: https://github.com/airbnb/javascript[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide[github-ruby]: https://github.com/styleguide/ruby[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md[moneyforward-corp]: http://corp.moneyforward.com/[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide[moneyforward-rails]: https://github.com/moneyforward/rails-style-guide
