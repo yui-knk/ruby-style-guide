@@ -504,14 +504,24 @@
 * <a name="underscores-in-numerics-hex"></a>
 桁数が大きな2進法および16進法の数値リテラルは4桁毎に下線を入れて読みやすくする。
 <sup>[[link](#underscores-in-numerics-hex)]</sup>
-  - 例: `0xABCD_1234`
-* 16進法はアルファベットの大文字で書いても小文字で書いても良いが、1つのファイルの中では統一すること。
-* <a name="fraction"></a>
-分数は `r` サフィックスを用いて書くこと。<sup>[[link](#fraction)]</sup>  - 例: `1/2r #=> (1/2)`
+
+  - 例: `0xABCD_1234`
+
+* 16進法はアルファベットの大文字で書いても小文字で書いても良いが、1つのファイルの中では統一すること。
+
+* <a name="fraction"></a>
+分数は `r` サフィックスを用いて書くこと。
+<sup>[[link](#fraction)]</sup>
+  - 例: `1/2r #=> (1/2)`
 
 * <a name="complex-number"></a>
 複素数は `i` または `ri` サフィックスを用いて書くこと。
-<sup>[[link](#complex-number)]</sup>  - 例: `1 + 2i #=> (1+2i)`
+<sup>[[link](#complex-number)]</sup>
+  - 例: `1 + 2i #=> (1+2i)`
+
+
+
+
 * <a name="rdoc-conventions"></a>
   APIのドキュメントのため、RDocの規約に従いましょう。
   コメント行と`def`の間に空行を入れてはいけません。
@@ -875,7 +885,8 @@
   end
   ```
 * <a name="no-unless-with-multi-condition"></a>
-`unless` および `until` の条件式に複数の項を `||` で結合した論理式 (加法標準形) を書いてはならない。<sup>[[link](#no-unless-with-multi-condition)]</sup>
+`unless` および `until` の条件式に複数の項を `||` で結合した論理式 (加法標準形) を書いてはならない。
+<sup>[[link](#no-unless-with-multi-condition)]</sup>
 
 * <a name="no-parens-if"></a>
   `if/unless/while/until`構文では`()`の使用は避けましょう.
@@ -1023,8 +1034,17 @@
   ```
 
 * <a name="no-braces-opts-hash2"></a>
-パラメータリストの末尾にハッシュリテラルを書く場合は、ハッシュリテラルの括弧を省略すること。<sup>[[link](#no-braces-opts-hash2)]</sup>
-    ```ruby    # 良い例    foo(1, 2, foo: :bar, baz: 42)    # bad    foo(1, 2, { foo: :bar, baz: 42 })    ```
+パラメータリストの末尾にハッシュリテラルを書く場合は、ハッシュリテラルの括弧を省略すること。
+<sup>[[link](#no-braces-opts-hash2)]</sup>
+
+    ```ruby
+    # 良い例
+    foo(1, 2, foo: :bar, baz: 42)
+
+    # bad
+    foo(1, 2, { foo: :bar, baz: 42 })
+    ```
+
 * <a name="no-dsl-decorating"></a>
   内部DSLの一部として使われるメソッドの引数では、外側の`()`、`{}`は省略しましょう
 <sup>[[link](#no-dsl-decorating)]</sup>
@@ -1092,20 +1112,98 @@
 
 
 * <a name="indent-do-end"></a>
-`do`/`end` によるブロックでは、`do`の前後に空白を1つ入れ、ブロックパラメータの後で改行し、`end` は独立した行に書くこと。ブロック本体のインデントは1レベル下げ、`end` のインデントはメソッド呼び出しの1行目にあわせること。<sup>[[link](#indent-do-end)]</sup>
-    ```ruby    # 良い例    [1, 2, 3].each do |num|      puts num    end    # 悪い例    [1, 2, 3].each do |num|        puts num      end    # 悪い例    [1, 2, 3].each do |num|                     puts num                   end    # bad    [1, 2, 3].each do |num| puts num end    ```* <a name="brace-block-space"></a>
-中括弧によるブロックでは、`{` の前に空白を1つ入れること。<sup>[[link](#brace-block-space2)]</sup>
-* <a name="brace-block-space"></a>
-中括弧によるブロックを1行で書く場合は、`{`　またはブロックパラメータと本体コードの間、および本体コードと `}` の間に空白を1つずつ入れること。<sup>[[link](#brace-block-space2)]</sup>
-    ```ruby    # 良い例    [1, 2, 3].each {|num| puts num }    [1, 2, 3].each { |num| puts num }    # 悪い例    [1, 2, 3].each {|num| puts num}    # 悪い例    [1, 2, 3].each { |num| puts num}    # 良い例    10.times { puts 'Hello world' }    # 悪い例    10.times {puts 'Hello world' }    # 悪い例    10.times {puts 'Hello world'}    # 悪い例    10.times { puts 'Hello world'}    ```	
+`do`/`end` によるブロックでは、`do`の前後に空白を1つ入れ、ブロックパラメータの後で改行し、`end` は独立した行に書くこと。ブロック本体のインデントは1レベル下げ、`end` のインデントはメソッド呼び出しの1行目にあわせること。
+<sup>[[link](#indent-do-end)]</sup>
+
+    ```ruby
+    # 良い例
+    [1, 2, 3].each do |num|
+      puts num
+    end
+
+    # 悪い例
+    [1, 2, 3].each do |num|
+        puts num
+      end
+
+    # 悪い例
+    [1, 2, 3].each do |num|
+                     puts num
+                   end
+
+    # bad
+    [1, 2, 3].each do |num| puts num end
+    ```
+
+* <a name="brace-block-space"></a>
+中括弧によるブロックでは、`{` の前に空白を1つ入れること。
+<sup>[[link](#brace-block-space2)]</sup>
+
+* <a name="brace-block-space"></a>
+中括弧によるブロックを1行で書く場合は、`{`　またはブロックパラメータと本体コードの間、および本体コードと `}` の間に空白を1つずつ入れること。
+<sup>[[link](#brace-block-space2)]</sup>
+
+    ```ruby
+    # 良い例
+    [1, 2, 3].each {|num| puts num }
+    [1, 2, 3].each { |num| puts num }
+
+    # 悪い例
+    [1, 2, 3].each {|num| puts num}
+
+    # 悪い例
+    [1, 2, 3].each { |num| puts num}
+
+    # 良い例
+    10.times { puts 'Hello world' }
+
+    # 悪い例
+    10.times {puts 'Hello world' }
+
+    # 悪い例
+    10.times {puts 'Hello world'}
+
+    # 悪い例
+    10.times { puts 'Hello world'}
+    ```
+	
 * <a name="long-method-chain"></a>
 長いメソッドチェインの最後のメソッド呼び出しでブロックを渡す場合、最後のメソッド呼び出しのレシーバをローカル変数として抽出し、ブロック付きメソッド呼び出しを独立した式として書くこと。
 <sup>[[link](#long-method-chain)]</sup>
-    ```ruby    # 良い例    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date)    posts.each do |post|      next if stuff_ids.include?(post.user_id)      comment_count += post.comments.size    end    # 悪い例    posts = Post.joins(:user)      .merge(User.paid)      .where(created_at: target_date).each do |post|        next if stuff_ids.include?(post.user_id)        comment_count += post.comments.size      end    ```
+
+    ```ruby
+    # 良い例
+    posts = Post.joins(:user)
+      .merge(User.paid)
+      .where(created_at: target_date)
+    posts.each do |post|
+      next if stuff_ids.include?(post.user_id)
+      comment_count += post.comments.size
+    end
+
+    # 悪い例
+    posts = Post.joins(:user)
+      .merge(User.paid)
+      .where(created_at: target_date).each do |post|
+        next if stuff_ids.include?(post.user_id)
+        comment_count += post.comments.size
+      end
+    ```
 
 * <a name="method-inline-newline"></a>
-式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。<sup>[[link](#method-inline-newline)]</sup>
-    ```ruby    # 良い例    User.active      .some_scope(foo)      .other_scope(bar)    # 悪い例    User.active.    some_scope(foo).    other_scope(bar)
+式の途中で改行する場合は、2行目以降を1行目より1段深くインデントすること。
+<sup>[[link](#method-inline-newline)]</sup>
+
+    ```ruby
+    # 良い例
+    User.active
+      .some_scope(foo)
+      .other_scope(bar)
+
+    # 悪い例
+    User.active.
+    some_scope(foo).
+    other_scope(bar)
     ```
 
 * <a name="block-argument"></a>
@@ -1907,7 +2005,9 @@
 
 * <a name="comment-tomdoc"></a>
 ドキュメンテーションコメントは[TomDoc](http://tomdoc.org/)のフォーマットに従うこと。
- * モジュールやクラスが外部に公開するメソッドとアクセサに対してドキュメンテーションコメントを Markdown 形式で書くこと。<sup>[[link](#comment-tomdoc)]</sup>
+ * モジュールやクラスが外部に公開するメソッドとアクセサに対してドキュメンテーションコメントを Markdown 形式で書くこと。
+
+<sup>[[link](#comment-tomdoc)]</sup>
 
 * <a name="comment-upkeep"></a>
   コメントは最新に保ちましょう。
@@ -1919,7 +2019,9 @@
   自己説明的なコードへのリファクタリングを行いましょう
 <sup>[[link](#refactor-dont-comment)]</sup>
 
-* <a name="inline-code-comment"></a>メソッドの本体コードにコメントを書かなければ理解できないようなコードを書いてはならない。 * メソッド本体内にコメントを書くよりも、別のメソッドに分けて適切な名前を付ける方が可読性が向上する。 * ただし、数式に対する補足や出展などはコード本体中にコメントとして書いても良い。
+* <a name="inline-code-comment"></a>メソッドの本体コードにコメントを書かなければ理解できないようなコードを書いてはならない。
+ * メソッド本体内にコメントを書くよりも、別のメソッドに分けて適切な名前を付ける方が可読性が向上する。
+ * ただし、数式に対する補足や出展などはコード本体中にコメントとして書いても良い。
 <sup>[[link](#inline-code-comment)]</sup>
 
 ### 注釈
@@ -2343,12 +2445,73 @@
   end
   ```
 
-* <a name="blakline-public-private-protected"></a>メソッド定義の後で、そのメソッドの可視性を変更するために `private` や `protected` や `public` を引数付きで呼び出す場合は、メソッド定義とこれらのメソッド呼び出しの間に空行を入れてはならない。<sup>[[link](#blankline-public-private-protected)]</sup>
-    ```ruby    class Foo      # 良い例      def foo      end      private :foo      # 悪い例      def foo      end      private :foo    end    ```
+* <a name="blakline-public-private-protected"></a>メソッド定義の後で、そのメソッドの可視性を変更するために `private` や `protected` や `public` を引数付きで呼び出す場合は、メソッド定義とこれらのメソッド呼び出しの間に空行を入れてはならない。
+<sup>[[link](#blankline-public-private-protected)]</sup>
+
+    ```ruby
+    class Foo
+      # 良い例
+      def foo
+      end
+      private :foo
+
+      # 悪い例
+      def foo
+      end
+
+      private :foo
+    end
+    ```
 
 * <a name="space-public-private-protected"></a>
-`private` や `protected` や `public` を引数なしで使用する場合、インデントレベルはメソッド定義と同じレベルとし、前後に1行ずつ空白を入れること。<sup>[[link](#space-public-private-protected)]</sup>
-    ```ruby    # 良い例    class Foo      def foo      end      private      def bar      end    end    # 悪い例    class Foo      def foo      end    private      def bar      end    end    # 悪い例    class Foo      def foo      end      private        def bar        end    end    # 悪い例    class Foo      def foo      end      private      def bar      end    end    ```
+`private` や `protected` や `public` を引数なしで使用する場合、インデントレベルはメソッド定義と同じレベルとし、前後に1行ずつ空白を入れること。
+<sup>[[link](#space-public-private-protected)]</sup>
+
+    ```ruby
+    # 良い例
+    class Foo
+      def foo
+      end
+
+      private
+
+      def bar
+      end
+    end
+
+    # 悪い例
+    class Foo
+      def foo
+      end
+
+    private
+
+      def bar
+      end
+    end
+
+    # 悪い例
+    class Foo
+      def foo
+      end
+
+      private
+
+        def bar
+        end
+    end
+
+    # 悪い例
+    class Foo
+      def foo
+      end
+
+      private
+      def bar
+      end
+    end
+    ```
+
 
 * <a name="def-self-singletons"></a>
   シングルトンメソッドを定義するときは`def self.method`を用いましょう。
@@ -2631,7 +2794,8 @@
   配列やハッシュのリテラルの方が好まれます。
   (コンストラクタに引数を渡す場合を除けば、ということですが)
  * 引数なしの `Array.new` `Hash.new` を使ってはならない。
- * 同じ要素を `n` 個持つ配列を初期化するときは `Array.new(n, obj)` を使用すること。`[obj] * n` と書いてはならない。
+ * 同じ要素を `n` 個持つ配列を初期化するときは `Array.new(n, obj)` を使用すること。`[obj] * n` と書いてはならない。
+
 <sup>[[link](#literal-array-hash)]</sup>
 
   ```Ruby
@@ -2647,7 +2811,16 @@
 *  <a name="range-to-array"></a>
 範囲リテラルを配列に変換するときは、`Range#to_a` ではなく `[*range]` を使うこと。
 <sup>[[link](#range-to-array)]</sup>
-    ```ruby    # 良い例    [*1..10]  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    # bad    (1..10).to_a  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    ```
+
+
+    ```ruby
+    # 良い例
+    [*1..10]  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    # bad
+    (1..10).to_a  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    ```
+
 * <a name="percent-w"></a>
   (空文字列や、文字列内にスペースが入っていない)文字列の配列構文は、
   `%w`リテラルの方が好まれます。
@@ -2814,7 +2987,16 @@
   { :a => 1, 'b' => 2 }
   ```
 
-    ```ruby    # 良い例    { :cookpad => 42,      :'cookpad.com' => 'foo',    }    # bad    { cookpad: 42,      :'cookpad.com' => 'foo',    }    ```
+    ```ruby
+    # 良い例
+    { :cookpad => 42,
+      :'cookpad.com' => 'foo',
+    }
+    # bad
+    { cookpad: 42,
+      :'cookpad.com' => 'foo',
+    }
+    ```
 
 
 
@@ -2912,7 +3094,7 @@
   ```Ruby
   batman = { name: 'Bruce Wayne', is_evil: false }
 
-  # 悪い例 - falseと判定される値が入っていた場合、望んだとお降りに動かないかもしれません
+  # 悪い例 - falseと判定される値が入っていた場合、望んだ通りに動かないかもしれません
   batman[:is_evil] || true # => true
 
   # 良い例 - falseと判定される値が入っていても正しく動きます
@@ -2959,12 +3141,16 @@
 * <a name="multi-use-variable"></a>
  ひとつの変数を異なる役割のために使い回してはならない。そうしたくなる場合は、メソッドを複数のメソッドに分割できる。
 <sup>[[link](#multi-use-variable)]</sup>
-* <a name="local-variable-scope"></a>
+
+* <a name="local-variable-scope"></a>
  ローカル変数のスコープ (有効範囲) を可能な限り小さくすること。ローカル変数が存在しないメソッドは良いメソッドである。
 <sup>[[link](#local-variable-scope)]</sup>
 
 ## 文字列
-* 空文字列は '' と書くこと。 *  理由が無い限り引数なしの String.new を使ってはならない。* 文字列内部のエスケープシーケンスが最も少なくなるよう、適切な区切り記号を選択すること。
+* 空文字列は '' と書くこと。
+ *  理由が無い限り引数なしの String.new を使ってはならない。
+* 文字列内部のエスケープシーケンスが最も少なくなるよう、適切な区切り記号を選択すること。
+
 * <a name="string-interpolation"></a>
   文字列連結の代わりに文字列挿入や文字列整形を好みます。
 <sup>[[link](#string-interpolation)]</sup>
@@ -2979,7 +3165,8 @@
   # 良い例
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
-* 式展開の中で Object#to_s だけを呼び出してはならない。たとえばこういうの→"#{obj.to_s}"* 式展開の中括弧を省略してはならない。
+* 式展開の中で Object#to_s だけを呼び出してはならない。たとえばこういうの→"#{obj.to_s}"
+* 式展開の中括弧を省略してはならない。
 * <a name="pad-string-interpolation"></a>
   文字列挿入時にはスペースを入れることを検討しましょう。
   文字列から分かれたコードがより明確になります。
@@ -3024,8 +3211,13 @@
   しかしながら、このガイド内の文字列リテラル表記は、
   １つ目のスタイルを採用しています。
 
-* <a name="persent-string-literals"></a>`%` 記法で文字列リテラルを書く場合は、括弧を区切り記号に使用すること。括弧の種類はどれでも良い。ただし、次のような特殊な場合は括弧以外を区切り記号として良い:<sup>[[link](#persent-string-literals)]</sup>
-    ```ruby    OPEN_PARENTHESES = %!({[!    ```
+* <a name="persent-string-literals"></a>`%` 記法で文字列リテラルを書く場合は、括弧を区切り記号に使用すること。括弧の種類はどれでも良い。ただし、次のような特殊な場合は括弧以外を区切り記号として良い:
+<sup>[[link](#persent-string-literals)]</sup>
+
+    ```ruby
+    OPEN_PARENTHESES = %!({[!
+    ```
+
 * <a name="no-character-literals"></a>
   文字リテラル構文`?x`を用いてはいけません。
 <sup>[[link](#no-character-literals)]</sup>
@@ -3118,7 +3310,8 @@
   # => "def test\n  some_method\n  other_method\nend\n"
   ```
 * <a name="loop-include-strings"></a>
-ループ内で文字列リテラルを書いてはならない。ここでループとは `while`、`until`、`for`、およびイテレータ (`each` などのブロックを何度も呼び出すブロック付きメソッド呼び出しのブロック内) である。<sup>[[link](#loop-include-strings)]</sup>
+ループ内で文字列リテラルを書いてはならない。ここでループとは `while`、`until`、`for`、およびイテレータ (`each` などのブロックを何度も呼び出すブロック付きメソッド呼び出しのブロック内) である。
+<sup>[[link](#loop-include-strings)]</sup>
 
 ## 正規表現
 
@@ -3225,11 +3418,15 @@
 <sup>[[link](#gsub-blocks)]</sup>
 
 
-## 代入式* <a name="tuple"></a>
-複合代入はリテラルまたは引数なしのメソッド呼び出しの結果を代入する場合、および2つの変数または属性の値を交換する場合のみ使ってよい。<sup>[[link](#tuple)]</sup>
+## 代入式
+
+* <a name="tuple"></a>
+複合代入はリテラルまたは引数なしのメソッド呼び出しの結果を代入する場合、および2つの変数または属性の値を交換する場合のみ使ってよい。
+<sup>[[link](#tuple)]</sup>
 
 * <a name="assignment-space"></a>
-代入記号の両側に空白を入れること。<sup>[[link](#assignment-space)]</sup>
+代入記号の両側に空白を入れること。
+<sup>[[link](#assignment-space)]</sup>
 
 ## パーセントリテラル
 
@@ -3308,7 +3505,7 @@
 
 * <a name="percent-s"></a>
   `%s`の使用は避けましょう。
-  Rubyコミュニティは、スペース含むシンボルをを作る時は
+  Rubyコミュニティは、スペース含むシンボルを作る時は
   `:"文字列"`がよいと決めたようです。
 <sup>[[link](#percent-s)]</sup>
 
@@ -3516,4 +3713,20 @@ MRI 1.9, MRI 2.0 双方をサポートし、Emacs向けのよいプラグイン�
 [RubyMine](http://www.jetbrains.com/ruby/) のコードインスペクションは、このガイドに
 [部分的に基づいています](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)。
 
-## Be Consistent&mdash;[Google C++ Style Guide][google-c++][airbnb-javascript]: https://github.com/airbnb/javascript[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide[github-ruby]: https://github.com/styleguide/ruby[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md[moneyforward-corp]: http://corp.moneyforward.com/[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide[moneyforward-rails]: https://github.com/moneyforward/rails-style-guide
+## Be Consistent
+
+&mdash;[Google C++ Style Guide][google-c++]
+
+[airbnb-javascript]: https://github.com/airbnb/javascript
+[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
+[github-ruby]: https://github.com/styleguide/ruby
+[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
+[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
+[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
+[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[cookpad-styleguide]: https://github.com/cookpad/styleguide/blob/master/ruby.ja.md
+[moneyforward-corp]: http://corp.moneyforward.com/
+[bojovs-com]: http://bojovs.com/2012/04/24/ruby-coding-style/
+[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide
+[moneyforward-rails]: https://github.com/moneyforward/rails-style-guide
+
